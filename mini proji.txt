@@ -1,0 +1,80 @@
+public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\safarifa1\\eclipse-workspace\\seleium\\Driver\\chromedriver.exe");
+	    ChromeOptions ch = new ChromeOptions();
+	    ch.addArguments("incognito");
+	    WebDriver driver = new ChromeDriver(ch);
+	    driver.manage().window().maximize();
+	    driver.get("http://automationpractice.com/index.php");
+	    
+	    WebElement dresses = driver.findElement(By.xpath("(//a[@title='Dresses'])[2]"));
+	    
+	    Actions ac = new Actions(driver);
+	    ac.moveToElement(dresses).build().perform();
+	    ac.click(dresses).build().perform();
+	    
+	    Thread.sleep(8000);
+	    
+	    WebElement evedress = driver.findElement(By.xpath("(//a[contains(@title,'Browse')])[1]"));
+	    
+	    ac.moveToElement(evedress).build().perform();
+	    ac.click(evedress).build().perform();
+	    
+	    Thread.sleep(8000);
+	    WebElement cartdress = driver.findElement(By.xpath("//img[@title='Printed Dress']"));
+	    
+	    ac.moveToElement(cartdress).build().perform();
+	    ac.click(cartdress).build().perform();
+	    
+	    
+	    WebElement frame = driver.findElement(By.xpath("//iframe"));
+	    
+	    driver.switchTo().frame(frame);
+	    Thread.sleep(10000);
+	    WebElement add = driver.findElement(By.xpath("//i[@class='icon-plus']"));
+	    
+	    ac.moveToElement(add).build().perform();
+	    ac.click().build().perform();
+    ac.click().build().perform();
+    ac.click().build().perform();
+    ac.click().build().perform();
+    
+    WebElement submit = driver.findElement(By.xpath("(//button[@name='Submit'])"));
+    
+    ac.moveToElement(submit).build().perform();
+    ac.click().build().perform();
+    
+    Thread.sleep(10000);
+    driver.switchTo().defaultContent();
+    
+    Thread.sleep(10000);
+    
+    WebElement checkout = driver.findElement(By.xpath("//span[contains(text(),'Proceed')]"));
+    
+    ac.moveToElement(checkout).build().perform();
+    ac.click(checkout).build().perform();
+    
+    
+    driver.findElement(By.xpath("(//span[contains(text(),'Proceed')])[2]")).click();
+    
+    driver.findElement(By.xpath("(//input[@type='text'])[3]")).sendKeys("rifmohamed126@gmail.com");
+    driver.findElement(By.xpath("//input[@type='password']")).sendKeys("rifa1018");
+    driver.findElement(By.xpath("(//i[contains(@class,'icon')])[8]")).click();
+    
+    driver.findElement(By.xpath("(//span[contains(text(),'Proceed')])[2]")).click();
+    
+    driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+    driver.findElement(By.xpath("(//span[contains(text(),'Proceed')])[2]")).click();
+    
+    
+    driver.findElement(By.xpath("//a[@class='cheque']")).click();
+    
+    driver.findElement(By.xpath("//span[contains(text(),'I')]")).click();
+    
+    
+	    
+	
+	
+	
+	}
+
+}
